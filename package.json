@@ -14,9 +14,9 @@
     "express": "^4.16.4",
     "fs": "0.0.1-security",
     "json2csv": "^4.2.1",
-    "jsonexport": "^2.3.0",
+   
     "mongoose": "^5.3.3",
-    "redis": "^2.8.0",
+    
     "twit": "^2.2.11",
     "twitter": "^1.7.1"
   }
