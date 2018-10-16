@@ -10,13 +10,12 @@
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.18.3",
+    "ejs": "^2.6.1",
     "ejs-mate": "^2.3.0",
     "express": "^4.16.4",
     "fs": "0.0.1-security",
     "json2csv": "^4.2.1",
-   
     "mongoose": "^5.3.3",
-    
     "twit": "^2.2.11",
     "twitter": "^1.7.1"
   }
