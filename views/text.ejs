@@ -1,0 +1,53 @@
+<head><link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"></head>
+<p><form action='/search/:page' method='GET' class='form-inline'>
+	<div class='form-group'>
+		<input class="form-control" type='text' name="search" placeholder="twits"	>
+		<button class="btn btn-primary btn-large">Search</button>
+	</div>
+</form>
+</p>
+<% if(noMatch.length>1){ %>
+    <%= noMatch %>
+<%}else{%>
+
+<% t.forEach(function(t){ %>
+    <h3>Tweets</h3>
+    <div>
+        <p><%= t.name+": "+t.text %></p>
+        <p><%= t.created_at %></p>
+       <p>Retweet_count: <%=t.retweet_count%></p>
+      
+    </div>
+<%})%>
+<%}%>
+
+
+<% if (pages > 0) { %>
+    <ul class="pagination text-center">
+        <% if (current == 1) { %>
+            <li class="disabled"><a>First</a></li>
+        <% } else { %>
+            <li><a href="/search/1">First</a></li>
+        <% } %>
+        <% var i = (Number(current) > 5 ? Number(current) - 4 : 1) %>
+        <% if (i !== 1) { %>
+            <li class="disabled"><a>...</a></li>
+        <% } %>
+        <% for (; i <= (Number(current) + 4) && i <= pages; i++) { %>
+            <% if (i == current) { %>
+                <li class="active"><a><%= i %></a></li>
+            <% } else { %>
+                <li><a href="/search/<%= i %>"><%= i %></a></li>
+            <% } %>
+            <% if (i == Number(current) + 4 && i < pages) { %>
+                <li class="disabled"><a>...</a></li>
+            <% } %>
+        <% } %>
+        <% if (current == pages) { %>
+            <li class="disabled"><a>Last</a></li>
+        <% } else { %>
+            <li><a href="/search/<%= pages %>">Last</a></li>
+        <% } %>
+    </ul>
+<% } %>
+</div>
