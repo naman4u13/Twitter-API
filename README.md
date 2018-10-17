@@ -1,16 +1,19 @@
 
 # Table Of Contents
 1. [Description](#description)
-2. [API 1](#api-1)
+2. [Getting Started](#getting-started)
+   * [Prerequisites](#prerequisites)
+   * [Installation](#installation-setting-up-project)
+3. [API 1](#api-1)
     * [Trigger search or stream](#trigger-search-or-stream) 
     * [Libraries for twitter search or streaming](#libraries-for-twitter-search-or-streaming)
     * [Fetch tweets](#fetch-tweets)
     * [Database Schema](#database-schema)
-3. [API 2](#api-2)
+4. [API 2](#api-2)
     * [Pagination](#pagination)
     * [Text Search and Filter](#text-search-and-filter)
     * [Sorting](#sorting) 
-4. [API 3](#api-3)
+5. [API 3](#api-3)
     * [save to CSV](#csv)
 
 # Description
@@ -20,7 +23,48 @@ date-time etc ) for a recent high traffic event and create a MVP.
 2. API 2 to return stored tweets and their metadata based on applied filters/search.
 3. API 3 to export filtered data as CSV.
 
+2. ## Getting Started
+> Following instructions will get you a copy of the project up and running on your local machine
+****
+## Prerequisites
+  * you need to have nodejs and npm installed on your system . ([get_node](https://nodejs.org/en/download/))
+  * This API make use of **twitter** npm package.
+  ```
+      'twitter' is Twitter API Client for node. Supports both the REST and Streaming API.  
+  ```
+  * Package.json include
+    + mongoose      
+    + ejs-mate
+    + body-parser
+    + mongodb
+    + express
+    + fs
+    + json2csv
+  
+     
+For installing package(s):
+   ```javascript
+   npm install --save <package_name> 
+   ```
+> --save install package into local node_module directory.
 
+
+ ### Installation (setting up project)
+  * Download the zip file and extract it.
+  * Cd to the project folder 'Twit_API-master'.
+  * make sure you have **mongoDB** installed in your local machine ([get mongoDB](https://docs.mongodb.com/manual/installation/))and mongodb server running([mongod](https://docs.mongodb.com/manual/tutorial/manage-mongodb-processes/)) at port 27017(default).
+  
+    
+ To run server file(Terminal 1):
+  ```javascript
+   run > node main.js
+   ```
+  
+ To run mongodb server(Terminal 2):
+  ```javascript
+   run > mongod
+   ``` 
+   
 # API 1
   ## Trigger Search or Stream
        var T = new Twit(config);
