@@ -25,97 +25,94 @@ date-time etc ) for a recent high traffic event and create a MVP.
   ## Trigger Search or Stream
        var T = new Twit(config);
 
-var params = {
-    q: '#nodejs',
-    count: 4,
-    result_type: 'recent',
-    lang: 'en'
-  }
-  T.get('search/tweets', params, function(err, data, response) {//search
+      var params = {
+         q: '#nodejs',
+         count: 4,
+         result_type: 'recent',
+         lang: 'en'
+      }
+      T.get('search/tweets', params, function(err, data, response) {//search
    //
-  })  
+                                                                           })  
 
-  var stream = T.stream('statuses/filter', { track: '#MeToo',language: 'en' });//stream
-  //
-      })
+        var stream = T.stream('statuses/filter', { track: '#MeToo',language: 'en' });//stream
+                  //
+         })
 
   ## Libraries for twitter search or streaming
    [link](https://www.npmjs.com/package/twitter)
 
  ## Fetch tweets
-var T = new Twit(config);
+      var T = new Twit(config);
 
-var params = {
-    q: '#nodejs',
-    count: 4,
-    result_type: 'recent',
-    lang: 'en'
-  }
-  T.get('search/tweets', params, function(err, data, response) {//search
-    if(!err){
-        var tweets = data.statuses;
-        for (var i = 0; i < tweets.length; i++) {
-          console.log(tweets[i].text);
+      var params = {
+         q: '#nodejs',
+         count: 4,
+         result_type: 'recent',
+         lang: 'en'
         }
+      T.get('search/tweets', params, function(err, data, response) {//search
+         if(!err){
+            var tweets = data.statuses;
+            for (var i = 0; i < tweets.length; i++) {
+            console.log(tweets[i].text);
+          }
      
-    } else {
-      console.log(err);
-    }
-  })  
+         } else {
+            console.log(err);
+        }
+      })  
 
-  var stream = T.stream('statuses/filter', { track: '#MeToo',language: 'en' });//stream
-  stream.on('data', function (data) {
+      var stream = T.stream('statuses/filter', { track: '#MeToo',language: 'en' });//stream
+         stream.on('data', function (data) {
         
      			   console.log((data));
-      let tw_obj  = {
-          "id_str":data.id_str,
-          "created_at":data.created_at,
-          "name":data.user.name,
-      "text":data.text,
-      "retweet_count": data.retweet_count,
+               let tw_obj  = {
+                  "id_str":data.id_str,
+                  "created_at":data.created_at,
+                  "name":data.user.name,
+                  "text":data.text,
+                  "retweet_count": data.retweet_count,
       
-      }
-      tw = new db(tw_obj);
-      tw.save((err,data)=>{
-          if(err) console.log(err);
-          else {
-              console.log("data save");
-             
-             
-          }
-      })
+                  }
+               tw = new db(tw_obj);
+               tw.save((err,data)=>{
+               if(err) console.log(err);
+                else {
+                  console.log("data save");
+               }
+            })
  
  
  ## Database Schema
-   const mongoose = require('mongoose')
-   const Schema = mongoose.Schema;
+        const mongoose = require('mongoose')
+        const Schema = mongoose.Schema;
 
-   const tweetSchema = new Schema({
-    name:{type:String},
-   id_str: {
-    type: String,
-    unique: true,
-    required: true
-  },
-  status: {
-    type: String,
+      const tweetSchema = new Schema({
+         name:{type:String},
+         id_str: {
+         type: String,
+         unique: true,
+         required: true
+      },
+      status: {
+         type: String,
+      },
+      author: {
+         type: String,
     
-  },
-  author: {
-    type: String,
-    
-  },
-  created_at: {
-    type: String,
-    required: true
-  },
-  text:{type:String},
-  retweet_count:{type:Number},
-  favorite_count:{type:Number}
-})
-module.exports = mongoose.model('Tweet', tweetSchema)
-# API 2
-  ## Pagination
+      },
+      created_at: {
+      type: String,
+      required: true
+      },
+      text:{type:String},
+      retweet_count:{type:Number},
+      favorite_count:{type:Number}
+      })
+      module.exports = mongoose.model('Tweet', tweetSchema)
+      # API 2
+      ## Pagination
      var perPage = 2
      var page = req.params.page || 1
      var noMatch=' ';
