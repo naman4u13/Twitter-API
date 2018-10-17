@@ -2,7 +2,7 @@
 # Table Of Contents
 1. [Description](#description)
 2. [API 1](#api-1)
-    * [Trigger search/stream](##trigger-search/stream) 
+    * [Trigger search/stream](#trigger-search-stream) 
     * [Libraries for twitter search or streaming](#libraries-for-twitter-search-or-streaming)
     * [Fetch tweets](#fetch-tweets)
     * [Database Schema](#database-schema)
