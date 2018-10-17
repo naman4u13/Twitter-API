@@ -23,7 +23,7 @@ date-time etc ) for a recent high traffic event and create a MVP.
 
 # API 1
   ## Trigger Search or Stream
-  var T = new Twit(config);
+       var T = new Twit(config);
 
 var params = {
     q: '#nodejs',
@@ -38,12 +38,8 @@ var params = {
   var stream = T.stream('statuses/filter', { track: '#MeToo',language: 'en' });//stream
   //
       })
-  
-  
-  
-  
-  
- ## Libraries for twitter search or streaming
+
+  ## Libraries for twitter search or streaming
    [link](https://www.npmjs.com/package/twitter)
 
  ## Fetch tweets
