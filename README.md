@@ -2,16 +2,6 @@
 # Table Of Contents
 1.  [Description](#description)
 2.  [API 1](#api1)
-   * [Trigger search/stream](#Trigger search/stream) 
-   * [Libraries for twitter search or streaming](#libraries for twitter search or streaming)
-   * [Fetch tweets](#fetch tweets)
-   * [Database Schema](#database schema)
-3. [API 2](#api2)
-   * [Pagination](#pagination)
-   * [Text Search and Filter](#text-search)
-   * [Sorting](#sorting) 
-4. [API 3](#api3)
-   * [save to CSV](#csv)
 
 
 
@@ -22,5 +12,5 @@ date-time etc ) for a recent high traffic event and create a MVP.
 2. API 2 to return stored tweets and their metadata based on applied filters/search.
 3. API 3 to export filtered data as CSV.
 
-# API 2
+# API 1
 
