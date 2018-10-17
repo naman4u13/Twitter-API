@@ -1,7 +1,7 @@
 
 # Table Of Contents
 1.  [Description](#description)
-2.  [API 1](#api1)
+2.  [API 1](#api-1)
 
 # Description
 Use Twitter Search/Streaming API to fetch and store the target tweets with metadata (eg: user details,
