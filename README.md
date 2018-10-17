@@ -32,15 +32,15 @@ date-time etc ) for a recent high traffic event and create a MVP.
          lang: 'en'
       }
       T.get('search/tweets', params, function(err, data, response) {//search
-   //
-                                                                           })  
+         //  }) 
+                                                                                  
 
         var stream = T.stream('statuses/filter', { track: '#MeToo',language: 'en' });//stream
                   //
          })
 
   ## Libraries for twitter search or streaming
-   [link](https://www.npmjs.com/package/twitter)
+   [Libraries used](https://www.npmjs.com/package/twitter)
 
  ## Fetch tweets
       var T = new Twit(config);
@@ -196,7 +196,8 @@ date-time etc ) for a recent high traffic event and create a MVP.
       Sorting has done on the basis of date and time
 # API 3
   ## Save to CSV
-      db.find({},function(err,y){
+  
+     ` db.find({},function(err,y){
       if(err) console.log(err);
       const json2csv = require('json2csv').parse;
       const fs = require('fs');
@@ -208,4 +209,4 @@ date-time etc ) for a recent high traffic event and create a MVP.
        console.log('file saved');
        });
       res.render('index',{p:y});
-   })
+    })`
