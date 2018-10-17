@@ -23,32 +23,196 @@ date-time etc ) for a recent high traffic event and create a MVP.
 
 # API 1
   ## Trigger Search or Stream
-  
-  
-  
-  
-  
-  
- 2. Libraries for twitter search or streaming
+  var T = new Twit(config);
 
+var params = {
+    q: '#nodejs',
+    count: 4,
+    result_type: 'recent',
+    lang: 'en'
+  }
+  T.get('search/tweets', params, function(err, data, response) {//search
+   //
+  })  
 
- 3. Fetch tweets
+  var stream = T.stream('statuses/filter', { track: '#MeToo',language: 'en' });//stream
+  //
+      })
+  
+  
+  
+  
+  
+ ## Libraries for twitter search or streaming
+   [link](https://www.npmjs.com/package/twitter)
+
+ ## Fetch tweets
+var T = new Twit(config);
+
+var params = {
+    q: '#nodejs',
+    count: 4,
+    result_type: 'recent',
+    lang: 'en'
+  }
+  T.get('search/tweets', params, function(err, data, response) {//search
+    if(!err){
+        var tweets = data.statuses;
+        for (var i = 0; i < tweets.length; i++) {
+          console.log(tweets[i].text);
+        }
+     
+    } else {
+      console.log(err);
+    }
+  })  
+
+  var stream = T.stream('statuses/filter', { track: '#MeToo',language: 'en' });//stream
+  stream.on('data', function (data) {
+        
+     			   console.log((data));
+      let tw_obj  = {
+          "id_str":data.id_str,
+          "created_at":data.created_at,
+          "name":data.user.name,
+      "text":data.text,
+      "retweet_count": data.retweet_count,
+      
+      }
+      tw = new db(tw_obj);
+      tw.save((err,data)=>{
+          if(err) console.log(err);
+          else {
+              console.log("data save");
+             
+             
+          }
+      })
  
  
- 
- 4. Database Schema
- 
+ ## Database Schema
+   const mongoose = require('mongoose')
+   const Schema = mongoose.Schema;
+
+   const tweetSchema = new Schema({
+    name:{type:String},
+   id_str: {
+    type: String,
+    unique: true,
+    required: true
+  },
+  status: {
+    type: String,
+    
+  },
+  author: {
+    type: String,
+    
+  },
+  created_at: {
+    type: String,
+    required: true
+  },
+  text:{type:String},
+  retweet_count:{type:Number},
+  favorite_count:{type:Number}
+})
+module.exports = mongoose.model('Tweet', tweetSchema)
 # API 2
-  1. Pagination
+  ## Pagination
+     var perPage = 2
+     var page = req.params.page || 1
+     var noMatch=' ';
+   
+    if(req.query.search){
+      const regex = new RegExp(escapeRegex(req.query.search), 'gi');
+      db
+      .find({name:regex})
+      .skip((perPage * page) - perPage)
+      .limit(perPage)
+      .exec(function(err, twit) {
+          db.count().exec(function(err, count) {
+              if (err) return next(err)
+              if(count<1){
+                noMatch="Notfound"
+              }
+              res.render('text', {
+                  t: twit,
+                  current: page,
+                  pages: Math.ceil(count / perPage),
+                 noMatch:noMatch
+              })
+          })
+        
+      })
   
   
   
   
+  ## Text Search and Filter
+      app.get('/search/:page',function(req,res){
+    var perPage = 2
+    var page = req.params.page || 1
+    var noMatch=' ';
+   
+    if(req.query.search){
+      const regex = new RegExp(escapeRegex(req.query.search), 'gi');
+      db
+      .find({name:regex})
+      .skip((perPage * page) - perPage)
+      .limit(perPage)
+      .exec(function(err, twit) {
+          db.count().exec(function(err, count) {
+              if (err) return next(err)
+              if(count<1){
+                noMatch="Notfound"
+              }
+              res.render('text', {
+                  t: twit,
+                  current: page,
+                  pages: Math.ceil(count / perPage),
+                 noMatch:noMatch
+              })
+          })
+        
+      })
+    }
+    else{
+      db
+      .find({})
+      .skip((perPage * page) - perPage)
+      .limit(perPage)
+      .exec(function(err, twit) {
+          db.count().exec(function(err, count) {
+              if (err) return next(err)
+              res.render('text', {
+                  t: twit,
+                  current: page,
+                  pages: Math.ceil(count / perPage),
+                 noMatch:noMatch
+              })
+          })
+        
+      })
+    }
+    
+  });
   
-  2. Text Search and Filter
   
-  
-  
-  3. Sorting
+  ## Sorting
+      Sorting has done on the basis of date and time
 # API 3
-  1. Save to CSV
+  ## Save to CSV
+      db.find({},function(err,y){
+      if(err) console.log(err);
+      const json2csv = require('json2csv').parse;
+      const fs = require('fs');
+      const fields = ['id_str','created_at', 'name','text'];
+      const csv = json2csv({ data: y, fields: fields });
+     
+       fs.writeFile('file.csv', csv, function(err) {
+       if (err) throw err;
+       console.log('file saved');
+       });
+      res.render('index',{p:y});
+   })
