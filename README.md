@@ -22,7 +22,7 @@ date-time etc ) for a recent high traffic event and create a MVP.
 
 
 # API 1
-  ## Trigger Search/Stream
+  ## Trigger Search or Stream
   
   
   
