@@ -1,16 +1,16 @@
 
 # Table Of Contents
 1.  [Description](#description)
-2. API 1:
+2. [API 1](#api1)
    * [Trigger search/stream](#Trigger search/stream) 
    * [Libraries for twitter search or streaming](#libraries for twitter search or streaming)
    * [Fetch tweets](#fetch tweets)
    * [Database Schema](#database schema)
-3. API 2:
+3. [API 2](#api2)
    * [Pagination](#pagination)
    * [Text Search and Filter](#text-search)
    * [Sorting](#sorting) 
-4. API 3:
+4. [API 3](#api2)
    * [save to CSV](#csv)
 
 
