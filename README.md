@@ -40,9 +40,10 @@ date-time etc ) for a recent high traffic event and create a MVP.
          })
 
   ## Libraries for twitter search or streaming
-   [Libraries used](https://www.npmjs.com/package/twitter)
+   [Libraries used for search and streaming](https://www.npmjs.com/package/twitter)
 
  ## Fetch tweets
+      const Twit = require('twitter');
       var T = new Twit(config);
 
       var params = {
@@ -196,7 +197,7 @@ date-time etc ) for a recent high traffic event and create a MVP.
       Sorting has done on the basis of date and time
 # API 3
   ## Save to CSV
-  
+     ### Exporting filtered data to CSV file using packages **json2csv** and **fs**.
      ` db.find({},function(err,y){
       if(err) console.log(err);
       const json2csv = require('json2csv').parse;
