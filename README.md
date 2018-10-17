@@ -10,7 +10,7 @@
     * [Pagination](#pagination)
     * [Text Search and Filter](#text-search-and-filter)
     * [Sorting](#sorting) 
-4. [API 3](#api3)
+4. [API 3](#api-3)
     * [save to CSV](#csv)
 
 # Description
@@ -22,7 +22,7 @@ date-time etc ) for a recent high traffic event and create a MVP.
 
 
 # API 1
- 1. Trigger search/stream
+  ## Trigger Search/Stream
   
   
   
