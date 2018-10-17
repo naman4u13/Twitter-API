@@ -1,5 +1,5 @@
-
-# Table Of Contents
+#  Twitter-API
+## Table Of Contents
 1. [Description](#description)
 2. [Getting Started](#getting-started)
    * [Prerequisites](#prerequisites)
@@ -16,17 +16,17 @@
 5. [API 3](#api-3)
     * [save to CSV](#csv)
 
-# Description
+## Description
 Use Twitter Search/Streaming API to fetch and store the target tweets with metadata (eg: user details,
 date-time etc ) for a recent high traffic event and create a MVP.
 1. API 1 to trigger a twitter search/stream for recent high traffic events. 
 2. API 2 to return stored tweets and their metadata based on applied filters/search.
 3. API 3 to export filtered data as CSV.
 
- # Getting Started
+ ## Getting Started
 > Following instructions will get you a copy of the project up and running on your local machine
 ****
-## Prerequisites
+### Prerequisites
   * you need to have nodejs and npm installed on your system . ([get_node](https://nodejs.org/en/download/))
   * This API make use of **twitter** npm package.
   ```
@@ -49,7 +49,7 @@ For installing package(s):
 > --save install package into local node_module directory.
 
 
- ## Installation (setting up project)
+ ### Installation (setting up project)
   * Download the zip file and extract it.
   * Cd to the project folder 'Twit_API-master'.
   * make sure you have **mongoDB** installed in your local machine ([get mongoDB](https://docs.mongodb.com/manual/installation/))and mongodb server running([mongod](https://docs.mongodb.com/manual/tutorial/manage-mongodb-processes/)) at port 27017(default).
@@ -65,8 +65,8 @@ For installing package(s):
    run > mongod
    ``` 
    
-# API 1
-  ## Trigger Search or Stream
+## API 1
+  ### Trigger Search or Stream
        var T = new Twit(config);
 
       var params = {
@@ -83,10 +83,10 @@ For installing package(s):
                   //
          })
 
-  ## Libraries for twitter search or streaming
+  ### Libraries for twitter search or streaming
    [Libraries used for search and streaming](https://www.npmjs.com/package/twitter)
 
- ## Fetch tweets
+ ### Fetch tweets
       const Twit = require('twitter');
       var T = new Twit(config);
 
@@ -129,7 +129,7 @@ For installing package(s):
             })
  
  
- ## Database Schema
+ ### Database Schema
         const mongoose = require('mongoose')
         const Schema = mongoose.Schema;
 
@@ -187,7 +187,7 @@ For installing package(s):
   
   
   
-  ## Text Search and Filter
+  ### Text Search and Filter
       app.get('/search/:page',function(req,res){
     var perPage = 2
     var page = req.params.page || 1
@@ -237,10 +237,10 @@ For installing package(s):
   });
   
   
-  ## Sorting
+  ### Sorting
       Sorting has done on the basis of date and time
-# API 3
-  ## Save to CSV
+## API 3
+  ### Save to CSV
      ### Exporting filtered data to CSV file using packages **json2csv** and **fs**.
      ` db.find({},function(err,y){
       if(err) console.log(err);
