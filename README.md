@@ -10,7 +10,7 @@
    * [Pagination](#pagination)
    * [Text Search and Filter](#text-search)
    * [Sorting](#sorting) 
-4. [API 3](#api2)
+4. [API 3](#api3)
    * [save to CSV](#csv)
 
 
@@ -22,4 +22,5 @@ date-time etc ) for a recent high traffic event and create a MVP.
 2. API 2 to return stored tweets and their metadata based on applied filters/search.
 3. API 3 to export filtered data as CSV.
 
-# Trigger search/stream
+# API 1
+
