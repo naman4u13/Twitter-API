@@ -14,7 +14,7 @@
     * [Text Search and Filter](#text-search-and-filter)
     * [Sorting](#sorting) 
 5. [API 3](#api-3)
-    * [save to CSV](#csv)
+    * [save to CSV](#save-to-csv)
 
 ## Description
 Use Twitter Search/Streaming API to fetch and store the target tweets with metadata (eg: user details,
@@ -185,8 +185,34 @@ For installing package(s):
       })
   
   
-  
-  
+  ## API 2
+  ### Pagination 
+       var perPage = 2
+    var page = req.params.page || 1
+    var noMatch=' ';
+   
+    if(req.query.search){
+      const regex = new RegExp(escapeRegex(req.query.search), 'gi');
+      db
+      .find({name:regex})
+      .skip((perPage * page) - perPage)
+      .limit(perPage)
+      .exec(function(err, twit) {
+          db.count().exec(function(err, count) {
+              if (err) return next(err)
+              if(count<1){
+                noMatch="Notfound"
+              }
+              res.render('text', {
+                  t: twit,
+                  current: page,
+                  pages: Math.ceil(count / perPage),
+                 noMatch:noMatch
+              })
+          })
+        
+      })
+    }
   ### Text Search and Filter
       app.get('/search/:page',function(req,res){
     var perPage = 2
