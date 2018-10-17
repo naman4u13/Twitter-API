@@ -23,7 +23,7 @@ date-time etc ) for a recent high traffic event and create a MVP.
 2. API 2 to return stored tweets and their metadata based on applied filters/search.
 3. API 3 to export filtered data as CSV.
 
-2. ## Getting Started
+ # Getting Started
 > Following instructions will get you a copy of the project up and running on your local machine
 ****
 ## Prerequisites
@@ -49,7 +49,7 @@ For installing package(s):
 > --save install package into local node_module directory.
 
 
- ### Installation (setting up project)
+ ## Installation (setting up project)
   * Download the zip file and extract it.
   * Cd to the project folder 'Twit_API-master'.
   * make sure you have **mongoDB** installed in your local machine ([get mongoDB](https://docs.mongodb.com/manual/installation/))and mongodb server running([mongod](https://docs.mongodb.com/manual/tutorial/manage-mongodb-processes/)) at port 27017(default).
